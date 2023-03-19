@@ -13,5 +13,6 @@ cargo run --release <path_to_project_root>
 ### to use the binary
 
 ```bash
+cargo install rust_project_reader
 cargo rust_project_reader <path_to_project_root>
 ```

@@ -15,12 +15,7 @@ fn is_not_target(entry: &DirEntry) -> bool {
 fn main() -> io::Result<()> {
     let args: Vec<String> = env::args().collect();
 
-    if args.len() != 2 {
-        println!("Usage: rust_project_reader <path>");
-        return Ok(());
-    }
-
-    let path = &args[1];
+    let path = args.last().unwrap();
 
     let mut output = String::new();
 
