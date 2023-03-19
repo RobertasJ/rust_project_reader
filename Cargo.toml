@@ -1,5 +1,10 @@
 [package]
 name = "rust_project_reader"
+description = "A simple program that reads all the fiels of a rust project and copies them to the clipboard. This is useful for using with chatgpt/gpt-4."
+repository = "https://github.com/RobertasJ/rust_project_reader"
+lisense = "GPL-3.0"
+license-file = "LICENSE.txt"
+
 version = "0.1.0"
 authors = ["Robertas <robertasj8@gmail.com>"]
 edition = "2021"
