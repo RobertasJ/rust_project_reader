@@ -1,0 +1,7 @@
+# [alias]
+# dev = "watch -x run"
+
+[env] # set any env variables on build or run here
+
+[registry]
+protocol = "sparse"

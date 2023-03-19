@@ -1,0 +1,9 @@
+[package]
+name = "rust_project_reader"
+version = "0.1.0"
+authors = ["Robertas <robertasj8@gmail.com>"]
+edition = "2021"
+rust-version = "1.68.0"
+
+[dependencies]
+walkdir = "2.3.3"
