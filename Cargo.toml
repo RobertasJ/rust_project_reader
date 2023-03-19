@@ -9,6 +9,10 @@ authors = ["Robertas <robertasj8@gmail.com>"]
 edition = "2021"
 rust-version = "1.68.0"
 
+[[bin]]
+name = "cargo-rust_project_reader"
+path = "src/main.rs"
+
 [dependencies]
 clipboard = "0.5.0"
 colored = "2.0.0"
