@@ -5,11 +5,13 @@ use walkdir::{DirEntry, WalkDir};
 use clipboard::{ClipboardProvider, ClipboardContext};
 use colored::*;
 
-fn blacklist(entry: &DirEntry) -> bool {
-    !entry
+mod print;
+
+fn whitelist(entry: &DirEntry) -> bool {
+    entry
         .path()
         .components()
-        .any(|c| c.as_os_str() == "target" || c.as_os_str() == "node_modules")
+        .any(|c| c.as_os_str() == "src" || c.as_os_str() == "src-tauri")
 }
 
 fn main() -> io::Result<()> {
@@ -21,34 +23,11 @@ fn main() -> io::Result<()> {
 
     for entry in WalkDir::new(path)
         .into_iter()
-        .filter_entry(|e| blacklist(e))
+        .filter_entry(|e| whitelist(e))
         .filter_map(|e| e.ok())
     {
         if entry.file_type().is_file() {
-            let ext = entry.path().extension().unwrap().to_str().unwrap(); 
-            let ext = match ext {
-                "rs" | "json" => {
-                    ext
-                },
-                "svelte" => {
-                    "html"
-                },
-                "js" => {
-                    "javascript"
-                },
-                "ts" => {
-                    "typescript"
-                },
-                _ => continue,
-            };
-            let mut file = File::open(entry.path())?;
-            let mut contents = String::new();
-            file.read_to_string(&mut contents)?;
-
-            output.push_str(&format!("{}", entry.path().display()));
-            output.push_str(&format!("\n```{ext}\n"));
-            output.push_str(&contents);
-            output.push_str("```\n\n");
+            print::print_entry(&entry, &mut output);
         }
     }
 
