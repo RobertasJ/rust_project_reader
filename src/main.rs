@@ -5,11 +5,11 @@ use colored::*;
 
 mod print;
 
-fn whitelist(entry: &DirEntry) -> bool {
-    entry
+fn blacklist(entry: &DirEntry) -> bool {
+    !entry
         .path()
         .components()
-        .any(|c| c.as_os_str() == "src" || c.as_os_str() == "src-tauri")
+        .any(|c| c.as_os_str() == "target" || c.as_os_str() == "node_modules")
 }
 
 fn main() -> io::Result<()> {
@@ -21,7 +21,7 @@ fn main() -> io::Result<()> {
 
     for entry in WalkDir::new(path)
         .into_iter()
-        .filter_entry(|e| whitelist(e))
+        .filter_entry(|e| blacklist(e))
         .filter_map(|e| e.ok())
     {
         if entry.file_type().is_file() {
