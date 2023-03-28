@@ -1,6 +1,4 @@
-use std::env;
-use std::fs::File;
-use std::io::{self, Read};
+use std::{env, io};
 use walkdir::{DirEntry, WalkDir};
 use clipboard::{ClipboardProvider, ClipboardContext};
 use colored::*;
@@ -27,7 +25,7 @@ fn main() -> io::Result<()> {
         .filter_map(|e| e.ok())
     {
         if entry.file_type().is_file() {
-            print::print_entry(&entry, &mut output);
+            print::print_entry(&entry, &mut output)?;
         }
     }
 
