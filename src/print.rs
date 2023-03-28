@@ -2,7 +2,7 @@ use std::{fs::File, io::Read};
 
 use walkdir::DirEntry;
 
-pub fn print_entry(entry: &DirEntry, &mut output: &mut String) {
+pub fn print_entry(entry: &DirEntry, &mut mut output: &mut String) {
     let ext = entry.path().extension().unwrap().to_str().unwrap(); 
             let ext = match ext {
                 "rs" | "json" => {
