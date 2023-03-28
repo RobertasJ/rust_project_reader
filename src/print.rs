@@ -1,9 +1,10 @@
-use std::{fs::File, io::{Read, self}};
+use std::{fs::File, io::Read, ffi::OsString};
 
 use walkdir::DirEntry;
 
-pub fn print_entry(entry: &DirEntry, output: &mut String) -> io::Result<()> {
-    let ext = entry.path().extension().unwrap().to_str().unwrap(); 
+pub fn print_entry(entry: &DirEntry, output: &mut String) -> Result<(), Box<dyn std::error::Error>> {
+    let binding = OsString::from("");
+    let ext = entry.path().extension().unwrap_or(&binding).to_str().unwrap(); 
         let ext = match ext {
             "rs" | "json" => {
                 ext

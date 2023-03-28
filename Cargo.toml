@@ -4,7 +4,7 @@ description = "A simple program that reads all the fiels of a rust project and c
 repository = "https://github.com/RobertasJ/rust_project_reader"
 license = "GPL-3.0"
 
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Robertas <robertasj8@gmail.com>"]
 edition = "2021"
 rust-version = "1.68.0"

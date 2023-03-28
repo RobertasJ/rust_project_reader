@@ -25,7 +25,7 @@ fn main() -> io::Result<()> {
         .filter_map(|e| e.ok())
     {
         if entry.file_type().is_file() {
-            print::print_entry(&entry, &mut output)?;
+            print::print_entry(&entry, &mut output).unwrap_or_default();
         }
     }
 
