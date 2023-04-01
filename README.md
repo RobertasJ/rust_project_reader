@@ -14,5 +14,5 @@ cargo run --release <path_to_project_root>
 
 ```bash
 cargo install rust_project_reader
-cargo rust_project_reader <path_to_project_root>
+cargo read <path_to_project_root>
 ```
